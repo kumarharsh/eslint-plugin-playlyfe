@@ -1,6 +1,7 @@
 {
   "name": "eslint-plugin-playlyfe",
   "description": "custom eslint stuff for playlyfe",
+  "version": "0.0.0-dummy-version",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha src/**/__tests__/*.js --recursive --compilers js:babel-register",
@@ -16,6 +17,10 @@
     "eslint",
     "eslint-plugin",
     "playlyfe"
+  ],
+  "files": [
+    "lib",
+    "README.md"
   ],
   "author": "Mayank Agarwal <mayank1791989@gmail.com>",
   "license": "MIT",
