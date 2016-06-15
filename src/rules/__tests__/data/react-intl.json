@@ -1,0 +1,14 @@
+{
+  "sample.string1": {
+    "id": "sample.string1",
+    "defaultMessage": "some sample string 1"
+  },
+  "sample.string2": {
+    "id": "sample.string2",
+    "defaultMessage": "some sample string 2"
+  },
+  "sample.string3": {
+    "id": "sample.string3",
+    "defaultMessage": "some sample string 3"
+  }
+}
