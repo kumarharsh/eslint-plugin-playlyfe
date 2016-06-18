@@ -10,5 +10,9 @@
   "sample.string3": {
     "id": "sample.string3",
     "defaultMessage": "some sample string 3"
+  },
+  "string4": {
+    "id": "string3",
+    "defaultMessage": "some sample string 3"
   }
 }

@@ -31,6 +31,16 @@ ruleTester.run('react-intl-no-empty-translation', rule, {
       `,
       ...defaultOptions,
     },
+
+    {
+      code: dedent`
+        export default {
+          'some.id.with.missing.translation': '',
+        }
+      `,
+      ...defaultOptions,
+      filename: 'not_intl_file.js',
+    }
   ],
 
   invalid: [

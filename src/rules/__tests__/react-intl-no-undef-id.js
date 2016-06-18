@@ -34,9 +34,49 @@ ruleTester.run('react-intl-no-undef-id', rule, {
       `,
       ...defaultOptions,
     },
+
+    {
+      code: dedent`
+        export default {
+          'some.random.id': 'some default message',
+        }
+      `,
+      ...defaultOptions,
+      filename: 'not_intl_file.js',
+    },
   ],
 
   invalid: [
+    {
+      code: dedent`
+        export default {
+          some_random_id: 'some default message',
+        }
+      `,
+      errors: [{
+        message: "id 'some_random_id' not present in reactIntlJson",
+        line: 2,
+        column: 3,
+      }],
+      ...defaultOptions,
+    },
+
+    // invalid key
+    {
+      code: dedent`
+        export default {
+          ["some" + "random"]: 'some default message',
+        }
+      `,
+      errors: [{
+        message: "Unsupported keyType",
+        line: 2,
+        column: 4,
+      }],
+      ...defaultOptions,
+    },
+
+    // error if react intl file path missing
     {
       code: dedent`
         export default {
@@ -44,12 +84,25 @@ ruleTester.run('react-intl-no-undef-id', rule, {
         }
       `,
       errors: [{
-        message: "id 'some.random.id' not present in reactIntlJson",
-        type: 'Literal',
-        line: 2,
-        column: 3,
+        message: 'Missing reactIntlFilePath option.',
       }],
-      ...defaultOptions,
+      parser: 'babel-eslint',
     },
+
+    // throw error if invalid file path
+    {
+      code: dedent`
+        export default {
+          'some.random.id': 'some default message',
+        }
+      `,
+      errors: [{
+        line: 1, column: 1,
+      }],
+      parser: 'babel-eslint',
+      options: [{
+        reactIntlFilePath: 'some_missing_file_path.json',
+      }]
+    }
   ],
 });

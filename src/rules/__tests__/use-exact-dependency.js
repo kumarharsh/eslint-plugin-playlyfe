@@ -34,6 +34,21 @@ ruleTester.run('use-exact-dependency', rule, {
       `,
       ...baseConfig,
     },
+
+    // not report if file not package.json
+    {
+      code: dedent`
+        const json = {
+          "dependencies": {
+            "dependency1": "^1.2.3",
+            "dependency2": "~1.2.3",
+            "dependency3": "1.2.3"
+          }
+        };
+      `,
+      ...baseConfig,
+      filename: 'some.json',
+    }
   ],
 
   invalid: [

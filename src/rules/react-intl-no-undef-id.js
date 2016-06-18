@@ -54,7 +54,7 @@ module.exports = (context) => {
   return {
     Property(node) {
       const id = getKeyText(node.key);
-      if (!reactIntlJson[id]) {
+      if (id && !reactIntlJson[id]) {
         context.report({
           node: node.key,
           message: `id '${id}' not present in reactIntlJson`,

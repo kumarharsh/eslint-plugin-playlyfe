@@ -58,7 +58,7 @@ module.exports = (context) => {
       node.properties.forEach((propertyNode) => {
         const keyText = getKeyText(propertyNode.key);
         if (keyText) {
-          presentIds[getKeyText(propertyNode.key)] = true;
+          presentIds[keyText] = true;
         }
       });
 

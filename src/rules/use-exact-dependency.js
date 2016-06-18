@@ -15,7 +15,6 @@ module.exports = (context) => {
   }
 
   function isPackageJSONFile(filePath) {
-    if (filePath === '<input>') { return true; } // filePath is <input> in test
     return filePath.endsWith('package.json');
   }
 
