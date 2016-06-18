@@ -21,7 +21,7 @@ module.exports = (context) => {
     if (node.type === 'Literal') { // find loc of first non whitespace character
       const value = node.value.split('\n');
       value.findIndex((rowString, index) => { // here using findIndex to bail on first find
-        const pos = rowString.search(/\w/);
+        const pos = rowString.search(/\S/);
         if (pos === -1) {
           line += 1;
         } else {
