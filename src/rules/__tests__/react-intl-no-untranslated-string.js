@@ -118,6 +118,17 @@ ruleTester.run('react-intl-no-untranslated-string', rule, {
       ],
     },
 
+    {
+      code: dedent`
+        <div>
+          ####ReportCorrectlyIfSpecialCharacters
+        </div>
+      `,
+      errors: [
+        error({line: 2, column: 3})
+      ]
+    }
+
 
   ],
 });
