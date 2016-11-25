@@ -112,6 +112,35 @@ ruleTester.run('relay-no-missing-variable-in-props', rule, {
       code: 'const PureComponent = () => <div>Pure React Component</div>;',
     },
 
+    // failed case in code
+    {
+      code: dedent`
+        class UsersManageBatchList extends React.PureComponent {
+          _rowRenderer = ({ index, key }: RowRenderOptions) => {
+            const user = this.props.users[index];
+            return (
+              <div key={key}>
+                <div>{user.name}</div>
+              </div>
+            );
+          };
+
+          render() {
+            return this._rowRenderer({ index: 0, key: 'key' });
+          }
+        }
+
+        export default Relay.createContainer(UsersManageBatchList, {
+          fragments: {
+            users: () => Relay.QL\`
+              fragment on Player @relay(plural: true) {
+                name
+              }
+            \`,
+          },
+        });
+      `
+    }
   ],
 
   invalid: [
