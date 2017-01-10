@@ -53,6 +53,14 @@ ruleTester.run('react-intl-no-untranslated-string', rule, {
       parser: 'babel-eslint',
     },
 
+    { // don't crash for non-string attributes
+      code: '<div title={false} />',
+      errors: [
+        error({line: 1, column: 13}),
+      ],
+      parser: 'babel-eslint',
+    },
+
     {
       code: '<div title={`string ${h} hello`} />',
       errors: [

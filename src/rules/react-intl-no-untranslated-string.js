@@ -18,7 +18,7 @@ module.exports = (context) => {
 
   function findCorrectLocation(node) { // remove whitespace from loc start
     let { line, column } = node.loc.start;
-    if (node.type === 'Literal') { // find loc of first non whitespace character
+    if (node.type === 'Literal' && (typeof node.value === 'string' || node.value instanceof String)) { // find loc of first non whitespace character
       const value = node.value.split('\n');
       value.findIndex((rowString, index) => { // here using findIndex to bail on first find
         const pos = rowString.search(/\S/);
