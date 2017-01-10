@@ -1,5 +1,5 @@
 /**
- * @fileoverview find empty translation in file
+ * @fileoverview find strings in source code which should translated, but are not
  * @author Mayank Agarwal
  */
 //------------------------------------------------------------------------------

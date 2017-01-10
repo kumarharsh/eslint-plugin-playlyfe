@@ -1,5 +1,5 @@
 /**
- * @fileoverview find keys in i18n files which are not in code
+ * @fileoverview find relay variables which are not in props
  * @author Mayank Agarwal
  */
 //------------------------------------------------------------------------------
